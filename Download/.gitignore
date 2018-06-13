@@ -1,0 +1,3 @@
+# Downloaded files and their MD5 checksums - ignore these
+*.gz
+*.md5
