@@ -8,8 +8,8 @@ download, and a second script to check the MD5 checksum, uncompress, and
 install the database.
 
 At CHPC, we perform these two steps on separate machines. Data download is
-handled by one of our specialized [data transfer nodes]
-(https://www.chpc.utah.edu/documentation/data_services.php#Data_Transfer_Nodes)
+handled by one of our specialized 
+[data transfer nodes](https://www.chpc.utah.edu/documentation/data_services.php#Data_Transfer_Nodes)
 which have 40 Gb network connections. This download can take up to 4 hours,
 depending on how many database files have been updated.
 
@@ -25,7 +25,7 @@ directory. Any files failing the checksum test are moved to the Quarantine
 directory. **The BLASTDB environment variable for your Blast processes should
 contain the full path name of the DbFiles directory.**
 
-##Installation
+## Installation
 1. Clone this repository to the location where you want your database files 
 to reside. The databases listed in our database_list file require over 900
 Gb of space.
@@ -40,7 +40,8 @@ Gb of space.
    of your download speed and the size of the database files you download,
    so plan for a worst-case scenario where all database files will require a
    download. Also set the directory name to which you have cloned this repo.
-5. Install cronfile.install on a head node of the cluster where you want the
+5. Install cronfile.install with the command
+   "crontab cronfile.install" on a head node of the cluster where you want the
    install to run.
 6. Edit blastdb_installer.sh. This is a SLURM script, so you must set the
    SLURM account, partition, and email address for the job.
