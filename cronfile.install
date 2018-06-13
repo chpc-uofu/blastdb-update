@@ -1,0 +1,9 @@
+#              minute         0-59
+#              hour           0-23
+#              day of month   1-31
+#              month          1-12 (or names, see below)
+#              day of week    0-7 (0 or 7 is Sunday, or use names)
+
+# Start install script through sbatch. This should happen some hours after
+# download has completed. Download starts at 18:02 on the 4th of the month.
+02 23 4 * * /bin/csh -mc "cd /uufs/chpc.utah.edu/sys/installdir/blastdb; sbatch ./blastdb_installer.sh >& blastdb_installer.out"
