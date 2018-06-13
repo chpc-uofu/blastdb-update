@@ -40,7 +40,8 @@ Gb of space.
    of your download speed and the size of the database files you download,
    so plan for a worst-case scenario where all database files will require a
    download. Also set the directory name to which you have cloned this repo.
-5. Install cronfile.install on a head node of the cluster where you want the
+5. Install cronfile.install with the command
+   "crontab cronfile.install" on a head node of the cluster where you want the
    install to run.
 6. Edit blastdb_installer.sh. This is a SLURM script, so you must set the
    SLURM account, partition, and email address for the job.
