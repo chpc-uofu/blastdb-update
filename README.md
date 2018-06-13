@@ -2,7 +2,8 @@
 
 ## Overview
 These scripts maintain up-to-date local copies of any number of BLAST
-databases from NCBI. This package includes two crontab scripts - one to
+databases from [NCBI](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download) . 
+This package includes two crontab scripts - one to
 perform the download of any databases updated at NCBI since the last
 download, and a second script to check the MD5 checksum, uncompress, and
 install the database.
@@ -11,7 +12,8 @@ At CHPC, we perform these two steps on separate machines. Data download is
 handled by one of our specialized 
 [data transfer nodes](https://www.chpc.utah.edu/documentation/data_services.php#Data_Transfer_Nodes)
 which have 40 Gb network connections. This download can take up to 4 hours,
-depending on how many database files have been updated.
+depending on how many database files have been updated. The download is performed by the perl
+script update_blastdb.pl from NCBI, included here for convenience.
 
 The second step, installation, is handled by a slurm script. We queue a
 slurm job at least 4 hours after the download has begun to guarantee the
@@ -39,7 +41,7 @@ Gb of space.
    giving the download ample time to complete. This time will be a function
    of your download speed and the size of the database files you download,
    so plan for a worst-case scenario where all database files will require a
-   download. Also set the directory name to which you have cloned this repo.
+   download. Also set the directory name into which you have cloned this repo.
 5. Install cronfile.install with the command
    "crontab cronfile.install" on a head node of the cluster where you want the
    install to run.
