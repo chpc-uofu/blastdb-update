@@ -21,19 +21,19 @@ check_md5_checksum ()
 	dbname=$1
 	shift
 	dbfiles=$*
+	echo "Checking md5 checksums for database $dbname, database files $dbfiles"
 	return_value=0
 	#for targzfile in `find Download -name $dbname"*.tar.gz" -size +0c -print`
 	for targzfile in $dbfiles
 	do
 		md5file=$targzfile".md5"
-		echo -n "Checking checksum for file $targzfile ... "
 		local_checksum=`md5sum $targzfile | cut -f1 -d' '`
 		remote_checksum=`cut -f1 -d' ' $md5file`
 		if [ "$local_checksum" = "$remote_checksum" ]
 		then
-			echo "checksum ok."
+			echo "Checksum for file $targzfile ok."
 		else
-			echo "checksum incorrect. Quarantining file."
+			echo "Checksum for file $targzfile incorrect. Quarantining file."
 			quarantine $targzfile $md5file
 			return_value=1
 		fi
@@ -55,12 +55,13 @@ install_database ()
 		if [ $? -eq 0 ]
 		then
 			# Database files OK.
-			echo "Database files OK. Installing."
-			tmpdir=tmp.$$
+			echo "Database files OK. Installing $dbname."
+			tmpdir=tmp.$dbname.$$
 			mkdir $tmpdir
 			cd $tmpdir
 			for targzfile in $dbfiles
 			do
+				echo "Untarring $targzfile in $tmpdir"
 				tar xvfz ../$targzfile
 			done
 			mv * ../DbFiles
@@ -71,13 +72,14 @@ install_database ()
 			# create and modify times.
 			for targzfile in $dbfiles
 			do
+				echo "Creating empty file for $targzfile"
 				emptyfile=$targzfile".empty"
 				touch --reference=$targzfile $emptyfile
 				mv $emptyfile $targzfile
 			done
 		else
 			# At least one checksum mismatch.
-			echo "At least one checksum mismatch. Not installing."
+			echo "At least one checksum mismatch. Not installing $dbname."
 		fi
 	else
 		echo "No new files for database $dbname."

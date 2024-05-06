@@ -1,22 +1,14 @@
-refseq_genomic
-other_genomic
-nr
-nt
-refseq_protein
-env_nt
-human_genomic
-tsa_nt
-refseq_rna
-est_others
-htgs
-gss
-patnt
-env_nr
-est_human
-16SMicrobial
-est_mouse
-gss_annot
-pataa
-sts
-swissprot
-vector
+# 16S_ribosomal_RNA
+# env_nr
+# env_nt
+# human_genome
+# nr
+# nt
+# pataa
+# patnt
+ref_euk_rep_genomes
+# ref_prok_rep_genomes
+# refseq_protein
+# refseq_rna
+# swissprot
+# tsa_nt

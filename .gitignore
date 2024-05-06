@@ -1,2 +1,5 @@
 # Ignore various output files (from downloads, slurm jobs)
 *.out
+*.gz
+*.md5
+*~
