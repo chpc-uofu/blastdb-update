@@ -4,5 +4,6 @@
 #              month          1-12 (or names, see below)
 #              day of week    0-7 (0 or 7 is Sunday, or use names)
 
-# Download any updated blast database files. Do this on airplane02-dmz.
-02 18 4 * * /bin/csh -mc "cd /uufs/chpc.utah.edu/sys/installdir/blastdb/Download; module load perl/5.18.1; cat ../database_list | xargs ../update_blastdb.pl >& ../download.out"
+# Download all the files of blast databases listed in ../database_list. This runs on dtn07.
+# Output is sent to download.out, and errors to download.err.
+10 02 20 * * /bin/csh -mc "cd /scratch/general/vast/app-repo/blastdb/Download; module load perl/5.18.1 aws-cli; ( (hostname; date; cat ../database_list | xargs -n 1 -P 3 ../update_blastdb.pl --source=aws --verbose --num_threads 3; date ) > ../download.out ) >& ../download.err; sbatch ../blastdb-update/blastdb_installer.sh >& ../sbatch.out"

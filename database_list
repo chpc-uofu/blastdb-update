@@ -1,14 +1,15 @@
-# 16S_ribosomal_RNA
-# env_nr
-# env_nt
-# human_genome
-# nr
-# nt
-# pataa
-# patnt
+16S_ribosomal_RNA
+env_nr
+env_nt
+GCF_000001405.39_top_level
+mito
+nr
+nt
+pataa
+patnt
 ref_euk_rep_genomes
-# ref_prok_rep_genomes
-# refseq_protein
-# refseq_rna
-# swissprot
-# tsa_nt
+ref_prok_rep_genomes
+refseq_protein
+refseq_rna
+swissprot
+tsa_nt
